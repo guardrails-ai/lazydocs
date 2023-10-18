@@ -705,7 +705,7 @@ class MarkdownGenerator(object):
             cls, lambda a: inspect.ismethod(a) or inspect.isfunction(a)
         ):
             if (
-                not name.startswith("_")
+                (not name.startswith("_") or name == "__call__")
                 and hasattr(obj, "__module__")
                 and name not in handlers
                 # object module should be the same as the calling module
